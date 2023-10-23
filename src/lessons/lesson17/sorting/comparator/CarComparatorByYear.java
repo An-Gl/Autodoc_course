@@ -1,4 +1,4 @@
-package lessons.lesson17.queue.sorting.comparator;
+package lessons.lesson17.sorting.comparator;
 
 import java.util.Comparator;
 

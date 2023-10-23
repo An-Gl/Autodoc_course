@@ -1,6 +1,6 @@
-package lessons.lesson17.queue.sorting.comparable;
+package lessons.lesson17.sorting.comparator;
 
-public class Car implements Comparable<Car> {
+public class Car {
     private String model;
     private int year;
 
@@ -31,18 +31,6 @@ public class Car implements Comparable<Car> {
                 "model='" + model + '\'' +
                 ", year='" + year + '\'' +
                 '}';
-    }
-
-    @Override
-    public int compareTo(Car newCar) {
-        if (this.year == newCar.year) {
-            return 0;
-
-        } else if (this.year < newCar.year) {
-            return -1;
-        } else {
-            return 1;
-        }
     }
 }
 
