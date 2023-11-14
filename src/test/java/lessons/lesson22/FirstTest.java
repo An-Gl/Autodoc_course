@@ -25,6 +25,7 @@ public class FirstTest {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @Test
@@ -35,8 +36,7 @@ public class FirstTest {
         WebElement btnSearch = driver.findElement(
                 By.xpath("//button[contains(@class, 'search-form__submit')]"));
         btnSearch.click();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        WebElement tittleOfFirstProduct = driver.findElement(
+                WebElement tittleOfFirstProduct = driver.findElement(
                 By.xpath("(//span[@class='goods-tile__title'])[1]"));
                 String tittle = tittleOfFirstProduct.getText().trim();
         Assert.assertEquals(tittle, EXPECTED_TITTLE, "Title doesn't contains searching data");
