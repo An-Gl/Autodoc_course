@@ -18,7 +18,7 @@ public class FirstTest {
     private WebDriver driver;
     private WebDriverWait webDriverWait;
 
-    final String EXPECTED_TITTLE = "Ноутбук Apple MacBook Air 13 M1 8/256GB 2020 (MGN63) Space Gray";
+    final String EXPECTED_TITTLE = "Ноутбук Apple MacBook Air 13\" M1 8/256GB 2020 (MGN63) Space Gray";
 
     @BeforeTest
     public void initDriver() {
@@ -35,16 +35,10 @@ public class FirstTest {
         WebElement btnSearch = driver.findElement(
                 By.xpath("//button[contains(@class, 'search-form__submit')]"));
         btnSearch.click();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         WebElement tittleOfFirstProduct = driver.findElement(
                 By.xpath("(//span[@class='goods-tile__title'])[1]"));
-        String tittle = tittleOfFirstProduct.getText().trim();
-
-//        if (tittle.contains("Mac")) {
-//            System.out.println("Title contains searching data");
-//        } else {
-//            Assert.fail("Title doesn't contains searching data");
-//        }
-
+                String tittle = tittleOfFirstProduct.getText().trim();
         Assert.assertEquals(tittle, EXPECTED_TITTLE, "Title doesn't contains searching data");
     }
 

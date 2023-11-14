@@ -1,6 +1,6 @@
 package lessons.lesson23;
 
-import drsf.WebDriverInit;
+import initWebDriverTest.WebDriverInit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
