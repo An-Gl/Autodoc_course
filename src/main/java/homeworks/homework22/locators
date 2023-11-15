@@ -4,7 +4,7 @@
 кнопка Каталог CSS: #fat-menu
 кнопка Каталог XPATH: //button[@id='fat-menu']
 
-кнопка микрофон CSS: button[class='search-form__microphone ng-star-inserted']
+кнопка микрофон CSS: button.search-form__microphone
 кнопка микрофон XPATH: //button[contains(@class, 'search-form__microphone')]
 
 кнопка корзины CSS: button[class='header__button ng-star-inserted']:nth-child(1)
