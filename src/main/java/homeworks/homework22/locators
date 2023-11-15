@@ -1,0 +1,11 @@
+логотип CSS: a.header__logo
+логотип XPATH: //a[@class='header__logo']
+
+кнопка Каталог CSS: #fat-menu
+кнопка Каталог XPATH: //button[@id='fat-menu']
+
+кнопка микрофон CSS: button[class='search-form__microphone ng-star-inserted']
+кнопка микрофон XPATH: //button[contains(@class, 'search-form__microphone')]
+
+кнопка корзины CSS: button[class='header__button ng-star-inserted']:nth-child(1)
+кнопка корзины XPATH: //li[contains(@class,'item--cart')]//button
