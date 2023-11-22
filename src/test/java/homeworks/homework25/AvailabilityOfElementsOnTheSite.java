@@ -14,7 +14,7 @@ public class AvailabilityOfElementsOnTheSite extends WebDriverInit {
     @Test
     public void checkingPrivacyPolicyLink() {
         openMainPage();
-        openToRegistrationBlock();
+        goToRegistrationBlock();
         checkingPrivacyPolicyLinkInRegistration();
     }
 
@@ -33,7 +33,7 @@ public class AvailabilityOfElementsOnTheSite extends WebDriverInit {
         driver.get("https://rozetka.com.ua/");
     }
 
-    public void openToRegistrationBlock() {
+    public void goToRegistrationBlock() {
                 WebElement loginBtn = driver
                 .findElement(By.xpath("(//button[contains(@class, 'header__button')])[2]"));
         loginBtn.click();
