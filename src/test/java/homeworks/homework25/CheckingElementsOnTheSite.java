@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 
-public class CheckingElementsOnTheSite_v2 extends WebDriverInit {
+public class CheckingElementsOnTheSite extends WebDriverInit {
 
     final String EXPECTED_TITTLE_PRIVACY_POLICY = "Угода користувача";
     final String EXPECTED_TITTLE_PERSONAL_ACCOUNT = "ОСОБИСТИЙ КАБІНЕТ";
