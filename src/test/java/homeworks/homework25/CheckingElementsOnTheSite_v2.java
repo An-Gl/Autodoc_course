@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import static java.lang.Thread.sleep;
 
 public class CheckingElementsOnTheSite_v2 extends WebDriverInit {
 
@@ -19,7 +18,7 @@ public class CheckingElementsOnTheSite_v2 extends WebDriverInit {
     final String EXPECTED_TITTLE_PERSONAL_ACCOUNT = "ОСОБИСТИЙ КАБІНЕТ";
 
     @Test
-    public void checkingElements() throws InterruptedException {
+    public void checkingElements() {
         openMainPage();
         goToRegistrationBlock();
         checkingPrivacyPolicyLinkInRegistration();
@@ -33,7 +32,7 @@ public class CheckingElementsOnTheSite_v2 extends WebDriverInit {
         driver.get("https://rozetka.com.ua/");
     }
 
-    public void goToRegistrationBlock() throws InterruptedException {
+    public void goToRegistrationBlock() {
         WebElement loginBtn = driver
                 .findElement(By.xpath("(//button[contains(@class, 'header__button')])[2]"));
         loginBtn.click();
@@ -42,7 +41,7 @@ public class CheckingElementsOnTheSite_v2 extends WebDriverInit {
         registrationBtn.click();
     }
 
-    public void checkingPrivacyPolicyLinkInRegistration() throws InterruptedException {
+    public void checkingPrivacyPolicyLinkInRegistration() {
         WebElement privatePolicyDocBtn = driver
                 .findElement(By.xpath("(//p[@class='form__caption'])[2]/a[2]"));
         Assert.assertTrue(privatePolicyDocBtn.isDisplayed(), "Privacy policy link is absent");
@@ -52,7 +51,7 @@ public class CheckingElementsOnTheSite_v2 extends WebDriverInit {
         driver.switchTo().window(listHandles.get(1));
     }
 
-    public void changeCFCookie(String value) throws InterruptedException {
+    public void changeCFCookie(String value)  {
         Cookie cookie = new Cookie("cf_clearance",value);
         driver.manage().deleteCookieNamed("cf_clearance");
         driver.manage().addCookie(cookie);
