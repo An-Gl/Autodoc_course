@@ -13,38 +13,47 @@ import static java.lang.Thread.sleep;
 public class CheckingAvailabilityOfPromoProductsSelectedByFilter extends WebDriverInit {
 
     final String EXPECTED_PROMO_LABEL = "АКЦІЯ";
+    final String cFCoolieValue = "2eeImjDdy07qf4fLS0jtP13u5u8l3ItEEhCkfWVlYhM-1701020941-0-1-a0523e9a.8c804b95." +
+            "f753617a-0.2.1701020941";
 
     @Test
     public void displayOfPromoStickers() throws InterruptedException {
-        openLaptopsPage();
+        openMainPage();
+        goToComputersCategory();
+        goToLaptopSubcategory();
         selectSupplier();
         setMaxPrice();
         findPromoProduct();
         openProductPageWithPromoSticker();
-        changeCFCookie("2eeImjDdy07qf4fLS0jtP13u5u8l3ItEEhCkfWVlYhM-1701020941-0-1-a0523e9a.8c804b95.f753617a-0.2.1701020941");
+        changeCFCookie(cFCoolieValue);
         checkPromoStickerOnProductPage();
     }
 
-    /*public void openMainPage() throws InterruptedException {
+    public void openMainPage() throws InterruptedException {
         driver.get("https://rozetka.com.ua/ua/");
         sleep(5000);
     }
 
-    public void goToLaptopSubcategory() {
+    public void goToComputersCategory() {
         WebElement laptopsAndComputerCategory = webDriverWait.until(ExpectedConditions.elementToBeClickable(By
                 .xpath("//ul[contains(@class, 'menu-categories_type_main')]/li[1]")));
         laptopsAndComputerCategory.click();
+    }
+
+    public void goToLaptopSubcategory() {
         WebElement subCategory = webDriverWait.until(ExpectedConditions.elementToBeClickable(By
                 .xpath("(//a[contains(@href, 'c80004/')])[1]")));
         subCategory.click();
-    }*/
+    }
 
-    public void openLaptopsPage() {
+      /*public void openLaptopsPage() {
             driver.get("https://rozetka.com.ua/ua/notebooks/c80004/");
-        }
+        }*/
     public void selectSupplier() {
         WebElement supplierCheckbox = driver.findElement(By.xpath("//a[@data-id='Rozetka']"));
             supplierCheckbox.click();
+        webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By
+                .xpath("//a[@class='catalog-selection__link']")));
     }
 
     public void setMaxPrice() {
