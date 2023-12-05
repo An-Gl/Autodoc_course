@@ -7,53 +7,58 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pattern.pageobject.selenium.MainPage;
 
 import static java.lang.Thread.sleep;
 
 public class CheckingAvailabilityOfPromoProductsSelectedByFilter extends WebDriverInit {
 
     final String EXPECTED_PROMO_LABEL = "АКЦІЯ";
-    final String cFCoolieValue = "2eeImjDdy07qf4fLS0jtP13u5u8l3ItEEhCkfWVlYhM-1701020941-0-1-a0523e9a.8c804b95." +
-            "f753617a-0.2.1701020941";
+    final String cookieValue = "6oG4zCBa65bacfen7Z0NgtqiwhzZYbPeFlK4LypD250-1701723723-0-1-a0523e9a.c993ba73.f753617a-0.2.1701723723";
 
     @Test
     public void displayOfPromoStickers() throws InterruptedException {
-        openMainPage();
+        driver.get("https://rozetka.com.ua/ua/");
+        changeCFCookie(cookieValue);
         goToComputersCategory();
         goToLaptopSubcategory();
         selectSupplier();
         setMaxPrice();
         findPromoProduct();
         openProductPageWithPromoSticker();
-        changeCFCookie(cFCoolieValue);
         checkPromoStickerOnProductPage();
     }
 
-    public void openMainPage() throws InterruptedException {
+    public void openMainPage() {
         driver.get("https://rozetka.com.ua/ua/");
-        sleep(5000);
     }
 
-    public void goToComputersCategory() {
+    public void goToComputersCategory() throws InterruptedException {
+        sleep(3000);
         WebElement laptopsAndComputerCategory = webDriverWait.until(ExpectedConditions.elementToBeClickable(By
                 .xpath("//ul[contains(@class, 'menu-categories_type_main')]/li[1]")));
         laptopsAndComputerCategory.click();
+        sleep(3000);
     }
 
-    public void goToLaptopSubcategory() {
+    public void goToLaptopSubcategory() throws InterruptedException {
+        sleep(3000);
         WebElement subCategory = webDriverWait.until(ExpectedConditions.elementToBeClickable(By
                 .xpath("(//a[contains(@href, 'c80004/')])[1]")));
         subCategory.click();
+        sleep(3000);
     }
 
-      /*public void openLaptopsPage() {
+      public void openLaptopsPage() {
             driver.get("https://rozetka.com.ua/ua/notebooks/c80004/");
-        }*/
-    public void selectSupplier() {
-        WebElement supplierCheckbox = driver.findElement(By.xpath("//a[@data-id='Rozetka']"));
+        }
+    public void selectSupplier() throws InterruptedException {
+        sleep(3000);
+        WebElement supplierCheckbox = webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@data-id='Rozetka']")));
             supplierCheckbox.click();
-        webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By
-                .xpath("//a[@class='catalog-selection__link']")));
+        webDriverWait.until(ExpectedConditions.invisibilityOfElementLocated(By
+                        .xpath("//a[@class='catalog-selection__link']")));
+        sleep(2000);
     }
 
     public void setMaxPrice() {
@@ -81,7 +86,6 @@ public class CheckingAvailabilityOfPromoProductsSelectedByFilter extends WebDriv
         Cookie cookie = new Cookie("cf_clearance", value);
         driver.manage().deleteCookieNamed("cf_clearance");
         driver.manage().addCookie(cookie);
-        driver.navigate().refresh();
     }
 
     public void checkPromoStickerOnProductPage() {

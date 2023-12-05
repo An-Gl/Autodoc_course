@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+import static java.lang.Thread.sleep;
+
 public interface IHeader {
 
     By productCounterInBasketPreview = By.xpath("//span[contains(@class, 'badge badge')]");
@@ -19,11 +21,14 @@ public interface IHeader {
         Assert.assertEquals(actualProductQuantity, "1");
     }
 
-    default void clickOnBasketBtnI(WebDriver driver) {
+    default void clickOnBasketBtnI(WebDriver driver) throws InterruptedException {
+        sleep(5000);
         driver.findElement(basketBtnInPreview).click();
+        sleep(5000);
     }
 
-    default String getProductTitleInTheBasketI(WebDriver driver) {
+    default String getProductTitleInTheBasketI(WebDriver driver) throws InterruptedException {
+        sleep(5000);
         return driver.findElement(productTitleInTheBasket).getAttribute("innerText");
     }
 }

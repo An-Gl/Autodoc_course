@@ -1,16 +1,16 @@
 package pattern.pageobject.selenium;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.List;
+
+import static java.lang.Thread.sleep;
 
 public class SubCategoryPage implements IHeader{
-    By productBuyBtn = By.xpath("//button[contains(@class, 'buy-button')]");
+    By productBuyBtn = By.xpath("(//button[contains(@class, 'buy-button')])[1]");
 
     private WebDriver driver;
     public WebDriverWait webDriverWait;
@@ -20,17 +20,8 @@ public class SubCategoryPage implements IHeader{
         this.webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(50));
     }
 
-    public SubCategoryPage changeCFCookie(String value) {
-        Cookie cookie = new Cookie("cf_clearance", value);
-        driver.manage().deleteCookieNamed("cf_clearance");
-        driver.manage().addCookie(cookie);
-        driver.navigate().refresh();
-        return this;
-    }
-
-    public SubCategoryPage addProductToTheBasketByIndex(int productIndex) {
-        List<WebElement> products = driver.findElements(productBuyBtn);
-        products.get(productIndex).click();
+    public SubCategoryPage addProductToTheBasket() {
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(productBuyBtn)).click();
         return this;
     }
 
@@ -39,12 +30,12 @@ public class SubCategoryPage implements IHeader{
         return this;
     }
 
-    public SubCategoryPage clickOnBasketBtn() {
+    public SubCategoryPage clickOnBasketBtn() throws InterruptedException {
         clickOnBasketBtnI(driver);
         return this;
     }
 
-    public String getProductTitleInTheBasket() {
+    public String getProductTitleInTheBasket() throws InterruptedException {
         return getProductTitleInTheBasketI(driver);
     }
 

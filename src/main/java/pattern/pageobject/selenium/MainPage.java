@@ -1,6 +1,7 @@
 package pattern.pageobject.selenium;
 
 
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,6 +18,14 @@ public class MainPage extends MainPageLocators{
     public MainPage(WebDriver driver) {
         this.driver = driver;
         this.webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
+    }
+
+    public MainPage changeCFCookie(String value) {
+        Cookie cookie = new Cookie("cf_clearance", value);
+        driver.manage().deleteCookieNamed("cf_clearance");
+        driver.manage().addCookie(cookie);
+        driver.navigate().refresh();
+        return this;
     }
 
 

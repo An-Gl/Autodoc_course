@@ -12,16 +12,16 @@ public class ProductInTheBasket extends WebDriverInit {
 
     final String URL = "https://rozetka.com.ua/ua/";
 
-    final String COOKIES_VALUE = "PG1UA_sMjNTJckUQpX32iwg8FhPG3v0_xsK2MsxrYyU-1701633575-0-1-a0523e9a.4a42d5cb.f753617a-0.1.1701633575";
+    final String COOKIES_VALUE = "LrDNkODK_.EOQleIElDIYkIN9_i8HigNCwQjDdtD_MU-1701715602-0-1-a0523e9a.1b18b253.f753617a-0.2.1701715602";
 
     @Test
-    public void addingProductToTheBasket() {
+    public void addingProductToTheBasket() throws InterruptedException {
         driver.get(URL);
         String actualProductTitle = new MainPage(driver)
+                .changeCFCookie(COOKIES_VALUE)
                 .clickOnComputerAndNotebookCategory()
                 .clickOnComputerSubCategory()
-                .changeCFCookie(COOKIES_VALUE)
-                .addProductToTheBasketByIndex(0)
+                .addProductToTheBasket()
                 .checkProductsQuantityInBasketPreview()
                 .clickOnBasketBtn()
                 .getProductTitleInTheBasket();
