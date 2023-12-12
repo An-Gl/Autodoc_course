@@ -2,10 +2,13 @@ package pattern.pageobject.selenide;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.WebDriverRunner;
+import org.openqa.selenium.Cookie;
 
 import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.refresh;
 
 public class MainPageLogic extends MainPageLocators {
 
@@ -19,6 +22,13 @@ public class MainPageLogic extends MainPageLocators {
                 .shouldBe(Condition.visible, Duration.ofSeconds(5))
                 .click();
         return page(CategoriesPageLogic.class);
+    }
+
+    public MainPageLogic setCookies(String cookieName, String cookieValue) {
+        Cookie cookie = new Cookie(cookieName, cookieValue);
+        WebDriverRunner.getWebDriver().manage().deleteCookieNamed(cookieName);
+        WebDriverRunner.getWebDriver().manage().addCookie(cookie);
+        return this;
     }
 
 }
