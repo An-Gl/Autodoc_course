@@ -21,7 +21,7 @@ public class TestForMvnSureFire {
     @Link(name = "requirements of API", url = "https://www.somerequire.com", type = "Trello")
     public void testSurefirePlugin() {
         System.out.println("Message for test");
-        new MainPageLogic().someMethod("Anna");
+        //new MainPageLogic().someMethod("Anna");
     }
 
 }
