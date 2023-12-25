@@ -2,8 +2,8 @@ package pattern.pageobject.selenide;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.WebDriverRunner;
-import org.openqa.selenium.Cookie;
+
+import io.qameta.allure.Step;
 
 import java.time.Duration;
 
@@ -24,10 +24,12 @@ public class MainPageLogic extends MainPageLocators {
         return page(CategoriesPageLogic.class);
     }
 
+
     public MainPageLogic setCookies(String cookieName, String cookieValue) {
         Cookie cookie = new Cookie(cookieName, cookieValue);
         WebDriverRunner.getWebDriver().manage().deleteCookieNamed(cookieName);
         WebDriverRunner.getWebDriver().manage().addCookie(cookie);
+
         return this;
     }
 
