@@ -15,4 +15,10 @@ public class CategoriesPageLogic extends CategoriesPageLocators {
         return page(SearchPageLogic.class);
     }
 
+    public SubCategoryPageLogic goToSubCategoryPage() {
+        laptopSubCategory.shouldBe(Condition.visible, Duration.ofSeconds(5))
+                .click();
+        return page(SubCategoryPageLogic.class);
+    }
+
 }
