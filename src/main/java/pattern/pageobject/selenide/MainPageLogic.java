@@ -2,6 +2,7 @@ package pattern.pageobject.selenide;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.Step;
 
 import java.time.Duration;
 
@@ -19,6 +20,12 @@ public class MainPageLogic extends MainPageLocators {
                 .shouldBe(Condition.visible, Duration.ofSeconds(5))
                 .click();
         return page(CategoriesPageLogic.class);
+    }
+
+    @Step(value = "some value")
+    public MainPageLogic someMethod(String name) {
+        System.out.println("do something with name" + name);
+        return this;
     }
 
 }
